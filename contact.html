@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contact - Space Science Website Template</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<link rel="stylesheet" type="text/css" href="css/mobile.css">
+	<script src="js/mobile.js" type="text/javascript"></script>
+	<script>
+		// Function to show the success message as a pop-up after validation
+		function showSuccessMessage(event) {
+			// Prevent form from submitting normally
+			event.preventDefault();
+
+			// Validate the form fields
+			if (!validateForm()) {
+				return false; // If validation fails, stop the form submission
+			}
+
+			// Show the success message in a pop-up
+			alert("Your message has been successfully sent!");
+
+			// Optionally, reset the form after submission
+			document.getElementById("contactForm").reset();
+		}
+
+		// Function to validate form fields
+		function validateForm() {
+			// Get the values of the form fields
+			var name = document.getElementsByName("Name")[0].value;
+			var email = document.getElementsByName("Email Address")[0].value;
+			var subject = document.getElementsByName("Subject")[0].value;
+			var message = document.getElementsByName("message")[0].value;
+
+			// Check if the Name field is empty
+			if (name === "" || name === "Name") {
+				alert("Please enter your name.");
+				return false;
+			}
+
+			// Check if the Email field is empty or invalid
+			if (email === "" || email === "Email Address" || !validateEmail(email)) {
+				alert("Please enter a valid email address.");
+				return false;
+			}
+
+			// Check if the Subject field is empty
+			if (subject === "" || subject === "Subject") {
+				alert("Please enter a subject.");
+				return false;
+			}
+
+			// Check if the Message field is empty
+			if (message === "" || message === "Message") {
+				alert("Please enter a message.");
+				return false;
+			}
+
+			// If all validations pass
+			return true;
+		}
+
+		// Function to validate email format
+		function validateEmail(email) {
+			// Simple regular expression for validating an email address
+			var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+			return regex.test(email);
+		}
+	</script>
+</head>
+<body>
+	<div id="page">
+		<div id="header">
+			<div>
+				<a href="index.html" class="logo"><img src="images/logo.png" alt=""></a>
+				<ul id="navigation">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li class="menu"><a href="projects.html">Projects</a></li>
+					<li class="menu"><a href="blog.html">Blog</a></li>
+					<li class="selected"><a href="contact.html">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="body">
+			<div class="header">
+				<div class="contact">
+					<h1>Contact</h1>
+					<h2>DO NOT HESITATE TO CONTACT US</h2>
+					<!-- Add the onsubmit event handler to call the showSuccessMessage function -->
+					<form id="contactForm" onsubmit="showSuccessMessage(event)">
+						<input type="text" name="Name" value="Name" onblur="this.value=!this.value?'Name':this.value;" onfocus="this.select()" onclick="this.value='';">
+						<input type="text" name="Email Address" value="Email Address" onblur="this.value=!this.value?'Email Address':this.value;" onfocus="this.select()" onclick="this.value='';">
+						<input type="text" name="Subject" value="Subject" onblur="this.value=!this.value?'Subject':this.value;" onfocus="this.select()" onclick="this.value='';">
+						<textarea name="message" cols="50" rows="7">Message</textarea>
+						<input type="submit" value="Send" id="submit">
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="connect">
+				<div>
+					<h1>FOLLOW US ON</h1>
+					<div>
+						<a href="https://www.facebook.com/siva.rao.9003" class="facebook">facebook</a>
+						<a href="https://twitter.com/Siva8414348" class="twitter">twitter</a>
+						<a href="https://wa.link/2glcym" class="googleplus">googleplus</a>
+						<a href="https://www.linkedin.com/in/siva-nageswara-rao-kakumanu/" class="pinterest">pinterest</a>
+					</div>
+				</div>
+			</div>
+			<div class="footnote">
+				<div>
+					<p>&copy; 2024 BY Siva | ALL RIGHTS RESERVED</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
